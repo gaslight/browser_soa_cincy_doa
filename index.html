@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Cincinnati Day of Agile: SOA in the Browser</title>
+    <script src="http://gnab.github.io/remark/downloads/remark-0.5.9.min.js" type="text/javascript"> </script>
+    <style type="text/css" media="screen">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      h1 { font-size: 3.5em; }
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        background: transparent !important;
+      }
+      a {
+        color: #F92672;
+        text-decoration: none;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .pushdown {
+        margin-top: 12em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# Agile SOA in the Browser
+
+### by [@superchris](http://twitter.com/superchris)
+### www.gaslight.co
+---
+class: center, middle
+
+# What the heck are you talking about?
+
+---
+class: center, middle
+
+# What's this have to do with Agile?
+
+---
+
+class: center, middle
+
+# Web app architecture is changing
+---
+# Original web apps
+## Request, then response
+## Send down a new page every time
+## Do it all on the server
+## Life is simple..
+---
+# Then AJAX happens
+## Request, then some kind of response
+## HTML, Javascript, JSON?
+## Things were a mess..
+---
+# We need a new architecture
+## Initial request loads the app
+## Subsequent requests send and receive JSON
+## Life is simple again.. kinda
+---
+# This seems familiar...
+## request/response containing JSON payloads
+## to a RESTful back end
+---
+class: center, inverse, middle
+
+# The server side of our web app just become our API
+
+---
+class: center
+# Old-skool SOA
+
+![Old-skool](oldskool.png)
+---
+#Problems:
+## Slow to build
+## Building the same app twice
+## Guessing wrong when you build the service first
+---
+class: center
+# New-skool SOA
+
+![New-skool](newskool.png)
+---
+# Advantages
+## Building front end first is fast
+## Show it to your users early
+## No more API speculation
+---
+# Barriers
+## Security
+## Same origin policy
+---
+# Same origin policy
+## Originally designed to protect content stealing
+## Prevents one website from hijacking the content of another
+## Also prevents lots of things you might legitimately want to do
+## Lots of workaround hacks (eg JSONp, iframes)
+---
+# CORS
+## Eliminates the need for hacks
+## Lets browsers step outside of same origin
+## Requires server support
+## Pretty [well supported](http://caniuse.com/cors)
+---
+# CORS headers
+## Origin
+## Access-Control-Allow-Origin
+---
+# OAuth 2
+## Allows user to grant access to 3rd party app
+## Allows 3rd party app to operate on behalf of user w/out knowing their credentials
+---
+![Oauth 2](oauth2.png)
+---
+class: center, middle, inverse
+# Let's git lunch!
+---
+class: center, middle, inverse
+# How to do it
+---
+## Javascript
+# TDD!
+## It's a [platform](https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS)
+---
+# Frameworks
+## $ is not good enough
+## [Ember](http://emberjs.com)
+## [Angular](http://angularjs.org)
+---
+# Front end first servers
+## [Yeoman](http://yeoman.io/)
+## [Lineman](http://www.linemanjs.com/)
+## Node.js
+---
+class: center, middle
+# [Do you even need a back end at all?](http://firebase.com)
+---
+# What about internal apps?
+## CORS could still apply (or proxy)
+## OAuth with pre-granted privileges
+---
+class: center, middle, inverse
+# Crazytown?
+---
+class: center, middle
+# Maybe.
+---
+class: center, middle, inverse
+# [Lessons from Groupon](https://engineering.groupon.com/2013/misc/i-tier-dismantling-the-monoliths/#more-1551)
+---
+class: center, middle
+# Questions?
+
+    </textarea>
+    <script>
+      var slideshow = remark.create({ highlightLanguage: 'javascript'});
+    </script>
+  </body>
+</html>
