@@ -27,7 +27,10 @@
         color: #f3f3f3;
         line-height: 0.8em;
       }
-
+      .strikethrough {
+        text-decoration: line-through;
+        color: grey;
+      }
       pre {
         border-left: 0.4em solid #d7d7d7;
         padding: 1em !important;
@@ -52,8 +55,23 @@
         float: right;
         margin-left: 1em;
       }
+      .left {
+        float: left;
+      }
       .pushdown {
         margin-top: 12em;
+      }
+      table.rest {
+        margin-top: 20px;
+        margin-left: 60px;
+        border: 1px solid black;
+        width: 500px;
+        border-collapse: collapse;
+      }
+      table.rest td {
+        border: 1px solid black;
+        font-size: 1.5em;
+        width: 250px;
       }
     </style>
   </head>
@@ -64,7 +82,8 @@ class: center, middle, inverse
 
 # Agile SOA in the Browser
 
-### by [@superchris](http://twitter.com/superchris)
+### Chris Nelson
+### [@superchris](http://twitter.com/superchris)
 ### www.gaslight.co
 ---
 class: center, middle
@@ -83,24 +102,27 @@ class: center, middle
 # Web app architecture is changing
 ---
 # Original web apps
+![Old web app architecture](old_web_apps.png)
 ## Request, then response
 ## Send down a new page every time
 ## Do it all on the server
-## Life is simple..
+## Life was simple..
 ---
 # Then AJAX happens
 ## Request, then some kind of response
 ## HTML, Javascript, JSON?
+## With great freedom comes great .strikethrough[responsibility] confusion
 ## Things were a mess..
 ---
-# We need a new architecture
+# We needed a new architecture
 ## Initial request loads the app
 ## Subsequent requests send and receive JSON
-## Life is simple again.. kinda
+![Old web app architecture](new_web_apps.png)
 ---
-# This seems familiar...
+# Extra benefits
 ## request/response containing JSON payloads
 ## to a RESTful back end
+## all this leads to...
 ---
 class: center, inverse, middle
 
@@ -108,17 +130,57 @@ class: center, inverse, middle
 
 ---
 class: center
-# Old-skool SOA
+# Traditional SOA
 
 ![Old-skool](oldskool.png)
 ---
-#Problems:
+# Technologies
+## SOAP
+## XML
+## WS-*
+---
+# Problems:
+## Cumbersome technology
 ## Slow to build
 ## Building the same app twice
 ## Guessing wrong when you build the service first
 ---
+# Lighter weight SOA
+## REST
+## JSON
+---
+# REST
+## Map the HTTP verbs we already have to CRUD Actions
+<table class="rest">
+  <thead>
+    <tr>
+      <td>Verb</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>POST</td>
+      <td>Create</td>
+    </tr>
+    <tr>
+      <td>GET</td>
+      <td>Retrieve</td>
+    </tr>
+    <tr>
+      <td>PUT (or PATCH)</td>
+      <td>Update</td>
+    </tr>
+    <tr>
+      <td>DELETE</td>
+      <td>Delete</td>
+    </tr>
+  </tbody>
+</table>
+
+---
 class: center
-# New-skool SOA
+# SOA Revisited
 
 ![New-skool](newskool.png)
 ---
@@ -127,11 +189,12 @@ class: center
 ## Show it to your users early
 ## No more API speculation
 ---
-# Barriers
+# Challenges
 ## Security
 ## Same origin policy
 ---
 # Same origin policy
+## You can only call back to the host that served you
 ## Originally designed to protect content stealing
 ## Prevents one website from hijacking the content of another
 ## Also prevents lots of things you might legitimately want to do
@@ -143,14 +206,16 @@ class: center
 ## Requires server support
 ## Pretty [well supported](http://caniuse.com/cors)
 ---
-# CORS headers
+# CORS HTTP headers
 ## Origin
 ## Access-Control-Allow-Origin
 ---
 # OAuth 2
 ## Allows user to grant access to 3rd party app
 ## Allows 3rd party app to operate on behalf of user w/out knowing their credentials
+## Applications need to be registered with one another
 ---
+# OAuth 2 Client side flow
 ![Oauth 2](oauth2.png)
 ---
 class: center, middle, inverse
@@ -162,6 +227,7 @@ class: center, middle, inverse
 ## Javascript
 # TDD!
 ## It's a [platform](https://github.com/jashkenas/coffee-script/wiki/List-of-languages-that-compile-to-JS)
+## Yay sourcemaps
 ---
 # Frameworks
 ## $ is not good enough
